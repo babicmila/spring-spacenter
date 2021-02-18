@@ -1,9 +1,6 @@
 package rs.ac.metropolitan.spacenter.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Tretman {
@@ -16,6 +13,9 @@ public class Tretman {
     private int tretmanTrajanje;
     private double tretmanCena;
     private String urlSlike;
+
+    @OneToOne()
+    private Kupon kupon;
 
     public Tretman() {
     }

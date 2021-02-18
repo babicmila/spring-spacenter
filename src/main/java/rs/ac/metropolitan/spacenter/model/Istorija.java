@@ -8,37 +8,25 @@ public class Istorija {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int istorijaId;
+    private final int istorijaId;
 
-    @OneToMany
-    private Set<Kupon> listaKupona = new HashSet<>();
-
-    @OneToOne
+    @OneToOne()
+    @JoinColumn(name = "korisnikId")
     private Korisnik korisnik;
 
-    public Istorija() {
-    }
+    @OneToMany()
+    @JoinTable(name = "kuponi_istorija", joinColumns = @JoinColumn(name = "istorijaId"), inverseJoinColumns = @JoinColumn(name = "kuponId"))
+    private Set<Kupon> listaKupona = new HashSet<>();
 
-    public Istorija(Set<Kupon> listaKupona, Korisnik k) {
-        this.listaKupona = listaKupona;
-        this.korisnik = k;
+
+    public Istorija(int istorijaId) {
+        this.istorijaId = istorijaId;
     }
 
     public int getIstorijaId() {
         return this.istorijaId;
     }
 
-    public void setIstorijaId(int istorijaId) {
-        this.istorijaId = istorijaId;
-    }
-
-    public Set<Kupon> getListaKupona() {
-        return this.listaKupona;
-    }
-
-    public void setListaKupona(Set<Kupon> listaKupona) {
-        this.listaKupona = listaKupona;
-    }
 
     public Korisnik getKorisnik() {
         return korisnik;

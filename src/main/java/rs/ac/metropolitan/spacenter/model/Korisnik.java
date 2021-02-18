@@ -1,6 +1,9 @@
 package rs.ac.metropolitan.spacenter.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Korisnik {
@@ -15,9 +18,8 @@ public class Korisnik {
     private final String brojTelefona;
     private final String email;
 
-    @OneToOne
-    public Istorija istorija;
-
+    @OneToOne()
+    private Istorija istorija;
 
     public Korisnik(Integer korisnikId, String ime, String prezime, String adresa, String grad, String brojTelefona, String email) {
         this.korisnikId = korisnikId;
@@ -60,21 +62,13 @@ public class Korisnik {
         return this.email;
     }
 
-//    public Rola getRola() {
+    //    public Rola getRola() {
 //        return this.rola;
 //    }
 //
 //    public void setRola(Rola rola) {
 //        this.rola = rola;
 //    }
-
-    public Istorija getIstorija() {
-        return this.istorija;
-    }
-
-    public void setIstorija(Istorija istorija) {
-        this.istorija = istorija;
-    }
 
     // public void rezervisiTretman() {
 

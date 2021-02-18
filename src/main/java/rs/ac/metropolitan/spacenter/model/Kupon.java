@@ -10,19 +10,24 @@ public class Kupon {
     private int kuponId;
     private String sifraKupona;
 
-    @OneToOne
+    @OneToOne()
+    @JoinColumn(name = "tretmanId")
     public Tretman tretman;
 
+    @OneToOne()
+    @JoinColumn(name = "korisnikId")
+    private Korisnik korisnik;
+
     @ManyToOne
-    public Istorija istorija;
+    Istorija istorija;
 
     public Kupon() {
     }
 
-    public Kupon(String sifraKupona, Tretman tretman, Istorija istorija) {
+    public Kupon(String sifraKupona, Tretman tretman, Korisnik korisnik) {
         this.sifraKupona = sifraKupona;
         this.tretman = tretman;
-        this.istorija = istorija;
+        this.korisnik = korisnik;
     }
 
     public int getKuponId() {
@@ -39,14 +44,6 @@ public class Kupon {
 
     public void setSifraKupona(String sifraKupona) {
         this.sifraKupona = sifraKupona;
-    }
-
-    public Istorija getIstorija() {
-        return istorija;
-    }
-
-    public void setIstorija(Istorija istorija) {
-        this.istorija = istorija;
     }
 
     public Tretman getTretman() {

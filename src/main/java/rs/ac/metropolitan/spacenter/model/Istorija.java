@@ -40,9 +40,27 @@ public class Istorija {
         this.listaKupona.add(kupon);
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Istorija istorija = (Istorija) o;
+        return istorijaId == istorija.istorijaId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(istorijaId);
+    }
+
     @Override
     public String toString() {
-        return "ID istorije: " + getIstorijaId();
+        return "Istorija{" +
+                "istorijaId=" + istorijaId +
+                ", korisnik=" + korisnik +
+                ", listaKupona=" + listaKupona +
+                '}';
     }
 }
 

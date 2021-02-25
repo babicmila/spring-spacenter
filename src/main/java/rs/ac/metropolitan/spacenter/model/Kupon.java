@@ -1,6 +1,7 @@
 package rs.ac.metropolitan.spacenter.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Kupon {
@@ -54,4 +55,27 @@ public class Kupon {
         this.tretman = tretman;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Kupon kupon = (Kupon) o;
+        return kuponId == kupon.kuponId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(kuponId);
+    }
+
+    @Override
+    public String toString() {
+        return "Kupon{" +
+                "kuponId=" + kuponId +
+                ", sifraKupona='" + sifraKupona + '\'' +
+                ", tretman=" + tretman +
+                ", korisnik=" + korisnik +
+                ", istorija=" + istorija +
+                '}';
+    }
 }

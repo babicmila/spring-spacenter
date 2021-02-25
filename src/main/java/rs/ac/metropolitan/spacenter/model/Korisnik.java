@@ -3,6 +3,7 @@ package rs.ac.metropolitan.spacenter.model;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -150,4 +151,31 @@ public class Korisnik {
 
     // }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Korisnik korisnik = (Korisnik) o;
+        return Objects.equals(korisnikId, korisnik.korisnikId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(korisnikId);
+    }
+
+    @Override
+    public String toString() {
+        return "Korisnik{" +
+                "korisnikId=" + korisnikId +
+                ", ime='" + ime + '\'' +
+                ", prezime='" + prezime + '\'' +
+                ", adresa='" + adresa + '\'' +
+                ", grad='" + grad + '\'' +
+                ", brojTelefona='" + brojTelefona + '\'' +
+                ", email='" + email + '\'' +
+                ", istorija=" + istorija +
+                '}';
+    }
 }

@@ -1,6 +1,7 @@
 package rs.ac.metropolitan.spacenter.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Tretman {
@@ -76,4 +77,29 @@ public class Tretman {
         urlSlike = newUrlSlike;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tretman tretman = (Tretman) o;
+        return tretmanId == tretman.tretmanId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tretmanId);
+    }
+
+    @Override
+    public String toString() {
+        return "Tretman{" +
+                "tretmanId=" + tretmanId +
+                ", tretmanNaziv='" + tretmanNaziv + '\'' +
+                ", tretmanOpis='" + tretmanOpis + '\'' +
+                ", tretmanTrajanje=" + tretmanTrajanje +
+                ", tretmanCena=" + tretmanCena +
+                ", urlSlike='" + urlSlike + '\'' +
+                ", kupon=" + kupon +
+                '}';
+    }
 }
